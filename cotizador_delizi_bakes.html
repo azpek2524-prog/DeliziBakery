@@ -315,6 +315,21 @@
         .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
         .toast .icon { font-size: 18px; color: #A9D6B4; }
 
+        /* ---------- Toggle chips (forma / entrega / pago) ---------- */
+        .toggle-row { display: flex; flex-wrap: wrap; gap: 8px; }
+        .toggle-chip {
+            border: 1.5px solid var(--line-strong); background: #fff; color: var(--ink);
+            border-radius: 999px; padding: 8px 15px; font-size: 13.5px; font-weight: 600; transition: all .16s;
+        }
+        .toggle-chip:hover { border-color: var(--sage); background: var(--sage-050); }
+        .toggle-chip.is-active { background: var(--sage); border-color: var(--sage-700); color: #fff; box-shadow: var(--shadow-sm); }
+        .toggle-chip.toggle-warn.is-active { background: var(--danger); border-color: var(--danger); }
+
+        .client-note { font-size: 11.5px; color: var(--ink-faint); margin: 16px 0 10px; line-height: 1.4; border-top: 1px dashed var(--line-strong); padding-top: 14px; }
+        .envio-input { display: inline-flex; align-items: center; gap: 2px; border: 1px solid var(--line-strong); border-radius: 9px; padding: 2px 8px; background: #fff; }
+        .envio-input span { color: var(--ink-faint); font-size: 13px; }
+        .envio-input input { width: 72px; border: 0; outline: none; text-align: right; font-size: 14px; font-weight: 600; font-family: inherit; color: var(--ink); padding: 4px 0; background: transparent; }
+
         .hidden { display: none !important; }
 
         /* scrollbar */
@@ -331,6 +346,88 @@
             .tab { padding: 9px 11px; }
             .card-pad { padding: 18px; }
         }
+
+        /* =========================================================
+           FORMULARIO IMPRIMIBLE (PDF)
+           ========================================================= */
+        #formulario-print { display: none; }
+        .fp-page {
+            --fp-line: #8E9A72; --fp-soft: #B9C0A0; --fp-ink: #4A4A42; --fp-cream: #F7F5EE;
+            font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+            color: var(--fp-ink); background: #fff; box-sizing: border-box;
+            width: 210mm; min-height: 297mm; padding: 12mm 12mm 0; margin: 0 auto; position: relative;
+        }
+        .fp-page * { box-sizing: border-box; }
+        .fp-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 6mm; }
+        .fp-logo { width: 42mm; height: 34mm; }
+        .fp-logo svg { width: 100%; height: 100%; }
+        .fp-head-r { text-align: right; }
+        .fp-title { font-size: 30px; font-weight: 700; color: #5E6A45; line-height: 1.05; letter-spacing: .01em; }
+        .fp-brand { font-family: 'Playfair Display', Georgia, serif; letter-spacing: .35em; color: var(--fp-soft); font-size: 13px; margin-top: 6px; }
+
+        .fp-k { font-weight: 700; letter-spacing: .02em; }
+        .fp-line { font-size: 13px; padding: 4px 0; border-bottom: 1px solid var(--fp-soft); }
+        .fp-ic { font-size: 15px; color: var(--fp-line); }
+
+        .fp-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+        .fp-left { display: flex; flex-direction: column; gap: 2px; }
+        .fp-checks { display: flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 12px; font-weight: 700; }
+        .fp-checks b { font-weight: 400; font-size: 15px; }
+        .fp-checks .fp-sep { color: var(--fp-soft); }
+        .fp-divider { display: inline-block; width: 1px; height: 14px; background: var(--fp-soft); margin: 0 4px; }
+
+        .fp-right { display: flex; flex-direction: column; gap: 4mm; }
+        .fp-box { border: 1.5px solid var(--fp-line); border-radius: 2px; padding: 8px 10px; }
+        .fp-box-title { font-size: 13px; font-weight: 700; text-align: center; color: #5E6A45; margin-bottom: 4px; }
+        .fp-imgbox { display: grid; grid-template-columns: 1.7fr 1fr; gap: 0; padding: 0; overflow: hidden; }
+        .fp-imgbox-left { padding: 8px; border-right: 1.5px solid var(--fp-line); }
+        .fp-imgbox-right { padding: 8px; }
+        .fp-img-holder { height: 42mm; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .fp-img-holder img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .fp-img-holder img[src=""], .fp-img-holder img:not([src]) { display: none; }
+        .fp-forma-list { display: flex; flex-direction: column; gap: 7px; align-items: center; font-size: 12px; margin-top: 4px; }
+        .fp-forma-opt { display: flex; align-items: center; gap: 6px; }
+        .fp-shape { display: inline-block; border: 1.5px solid var(--fp-line); }
+        .fp-shape.circ { width: 20px; height: 20px; border-radius: 50%; }
+        .fp-shape.sq { width: 18px; height: 18px; }
+        .fp-shape.rect { width: 24px; height: 15px; }
+        .fp-forma-opt.on .fp-shape { background: var(--fp-line); }
+        .fp-forma-opt .mk { font-size: 13px; font-weight: 700; }
+
+        .fp-3col { display: grid; grid-template-columns: 1fr 1fr 1fr; border: 1.5px solid var(--fp-line); border-radius: 2px; margin-top: 5mm; }
+        .fp-3col-item { padding: 8px 10px; border-right: 1.5px solid var(--fp-line); min-height: 24mm; }
+        .fp-3col-item:last-child { border-right: 0; }
+        .fp-col-title { font-size: 14px; font-weight: 700; text-align: center; color: #5E6A45; letter-spacing: .02em; }
+        .fp-col-title.center { border-bottom: 1.5px solid var(--fp-line); padding-bottom: 4px; margin-bottom: 4px; }
+        .fp-val { font-size: 13px; font-family: 'Inter', sans-serif; color: var(--fp-ink); margin-top: 6px; }
+
+        .fp-block { border: 1.5px solid var(--fp-line); border-top: 0; border-radius: 2px; padding: 8px 10px; }
+        .fp-3col + .fp-block { border-top: 0; }
+        .fp-multiline { min-height: 26mm; white-space: pre-wrap; }
+        .fp-tight { font-size: 13px; padding: 7px 10px; }
+        .fp-tight .fp-k { font-size: 13px; }
+
+        .fp-pay { border: 1.5px solid var(--fp-line); border-top: 0; margin-bottom: 6mm; }
+        .fp-pay-methods { display: flex; align-items: center; gap: 16px; padding: 8px 10px; font-size: 13px; font-weight: 700; border-bottom: 1.5px solid var(--fp-line); }
+        .fp-pay-methods b { font-weight: 400; font-size: 15px; }
+        .fp-totals { width: 100%; border-collapse: collapse; font-family: 'Inter', sans-serif; }
+        .fp-totals th { font-family: 'Playfair Display', Georgia, serif; font-size: 13px; color: #5E6A45; padding: 6px; border-right: 1.5px solid var(--fp-line); text-align: center; }
+        .fp-totals td { font-size: 14px; font-weight: 600; padding: 10px 6px; border-right: 1.5px solid var(--fp-line); border-top: 1.5px solid var(--fp-line); text-align: center; }
+        .fp-totals th:last-child, .fp-totals td:last-child { border-right: 0; }
+        .fp-totals td:last-child { font-weight: 800; color: #5E6A45; }
+
+        .fp-foot { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 14px; color: var(--fp-ink); padding: 4mm 0; }
+        .fp-thanks { position: absolute; left: 0; right: 0; bottom: 0; background: #5E6A45; color: #fff; text-align: center; padding: 6px; font-size: 15px; letter-spacing: .08em; }
+
+        @media print {
+            @page { size: A4 portrait; margin: 0; }
+            html, body { background: #fff !important; }
+            body > *:not(#formulario-print) { display: none !important; }
+            #formulario-print { display: block !important; }
+            .fp-page { width: 210mm; min-height: 297mm; padding-bottom: 14mm; }
+            .fp-img-holder img { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .fp-thanks, .fp-forma-opt.on .fp-shape, .fp-totals td:last-child { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
     </style>
 </head>
 <body>
@@ -339,22 +436,7 @@
     <header class="site-header">
         <div class="container header-inner">
             <div class="brand">
-                <div class="brand-mark">
-                    <svg viewBox="0 0 132 120" fill="none" role="img" aria-label="Delizi Bake's">
-                        <g stroke="#9AA484" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M33 14 C10 34 10 64 33 78"/>
-                            <path d="M33 14 C56 34 56 64 33 78"/>
-                            <path d="M33 14 C20 36 20 62 33 78"/>
-                            <path d="M33 14 C46 36 46 62 33 78"/>
-                            <path d="M33 14 C29 38 29 60 33 78"/>
-                            <path d="M33 14 C37 38 37 60 33 78"/>
-                            <path d="M26 72 h14 M25.5 75 h15"/>
-                            <path d="M33 79 C33 90 33 102 33 110" stroke-width="3.6"/>
-                        </g>
-                        <text x="70" y="98" font-family="'Playfair Display', Georgia, serif" font-size="86" font-weight="700" fill="#C3CBAE">B</text>
-                        <text x="30" y="98" font-family="'Playfair Display', Georgia, serif" font-size="104" font-weight="700" fill="#929D7C">D</text>
-                    </svg>
-                </div>
+                <div class="brand-mark" id="brand-mark"></div>
                 <div class="brand-text">
                     <div class="brand-name">DELIZI BAKE'S</div>
                     <div class="brand-tag">Cotizador de pasteles</div>
@@ -383,8 +465,65 @@
                         <h2 class="section-title">Costeo del pastel</h2>
                         <p class="section-sub">Anota las cantidades exactas que usarás para este pedido.</p>
 
+                        <!-- Paso 1: Datos del cliente y evento -->
                         <div class="subcard" style="margin-top:22px;">
-                            <div class="step-label"><span class="step-num">1</span> Datos del pedido · para el ticket</div>
+                            <div class="step-label"><span class="step-num">1</span> Datos del cliente y evento</div>
+
+                            <div class="grid-2">
+                                <div class="field" style="margin-bottom:0;">
+                                    <label class="field-label">N° de pedido</label>
+                                    <input type="text" id="ped-num" class="input" placeholder="Automático">
+                                </div>
+                                <div class="field" style="margin-bottom:0;">
+                                    <label class="field-label">Fecha del pedido</label>
+                                    <input type="date" id="ped-fecha" class="input">
+                                </div>
+                                <div class="field col-span-2" style="margin-bottom:0;">
+                                    <label class="field-label">Nombre del cliente</label>
+                                    <input type="text" id="cli-nombre" class="input" placeholder="Nombre y apellido">
+                                </div>
+                                <div class="field" style="margin-bottom:0;">
+                                    <label class="field-label">Teléfono</label>
+                                    <input type="tel" id="cli-tel" class="input" placeholder="81 0000 0000">
+                                </div>
+                                <div class="field" style="margin-bottom:0;">
+                                    <label class="field-label">Email</label>
+                                    <input type="email" id="cli-email" class="input" placeholder="correo@ejemplo.com">
+                                </div>
+                                <div class="field col-span-2" style="margin-bottom:0;">
+                                    <label class="field-label">Dirección</label>
+                                    <textarea id="cli-dir" rows="2" class="textarea" placeholder="Calle, número, colonia, ciudad..."></textarea>
+                                </div>
+                            </div>
+
+                            <div class="field" style="margin-top:14px;margin-bottom:0;">
+                                <label class="field-label">Tipo de entrega</label>
+                                <div class="toggle-row">
+                                    <button type="button" class="toggle-chip" id="ent-enviar" onclick="seleccionarEntrega('Enviar', this)">Enviar</button>
+                                    <button type="button" class="toggle-chip" id="ent-recoger" onclick="seleccionarEntrega('Recoger', this)">Recoger</button>
+                                    <button type="button" class="toggle-chip toggle-warn" id="ent-urgente" onclick="toggleUrgente(this)">Pedido urgente</button>
+                                </div>
+                            </div>
+
+                            <div class="grid-2" style="margin-top:14px;">
+                                <div class="field" style="margin-bottom:0;">
+                                    <label class="field-label">Fecha del evento</label>
+                                    <input type="date" id="ev-fecha" class="input">
+                                </div>
+                                <div class="field" style="margin-bottom:0;">
+                                    <label class="field-label">N° de invitados</label>
+                                    <input type="number" id="ev-invitados" class="input" placeholder="Ej. 30">
+                                </div>
+                                <div class="field col-span-2" style="margin-bottom:0;">
+                                    <label class="field-label">Ubicación del evento</label>
+                                    <input type="text" id="ev-ubicacion" class="input" placeholder="Salón, casa, dirección...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Paso 2: Detalles del pastel -->
+                        <div class="subcard" style="margin-top:16px;">
+                            <div class="step-label"><span class="step-num">2</span> Detalles del pastel</div>
 
                             <div class="field">
                                 <label class="field-label">Tamaño / Porciones</label>
@@ -398,6 +537,16 @@
                                 </div>
                             </div>
 
+                            <div class="field" style="margin-top:14px;">
+                                <label class="field-label">Forma</label>
+                                <div class="toggle-row" id="forma-buttons">
+                                    <button type="button" class="toggle-chip" onclick="seleccionarForma('Redondo', this)">Redondo</button>
+                                    <button type="button" class="toggle-chip" onclick="seleccionarForma('Cuadrado', this)">Cuadrado</button>
+                                    <button type="button" class="toggle-chip" onclick="seleccionarForma('Rectangular', this)">Rectangular</button>
+                                    <button type="button" class="toggle-chip" onclick="seleccionarForma('Otra', this)">Otra</button>
+                                </div>
+                            </div>
+
                             <div class="grid-2" style="margin-top:14px;">
                                 <div class="field" style="margin-bottom:0;">
                                     <label class="field-label">Sabor del pan</label>
@@ -408,8 +557,20 @@
                                     <input type="text" id="info-relleno" class="input" placeholder="Ej. Nutella y fresa">
                                 </div>
                                 <div class="field col-span-2" style="margin-bottom:0;">
-                                    <label class="field-label">Diseño / Notas (decoración)</label>
-                                    <textarea id="info-notas" rows="2" class="textarea" placeholder="Temática, colores, sin fondant..."></textarea>
+                                    <label class="field-label">Cobertura</label>
+                                    <input type="text" id="info-cobertura" class="input" placeholder="Ej. Buttercream, fondant, chantilly...">
+                                </div>
+                                <div class="field col-span-2" style="margin-bottom:0;">
+                                    <label class="field-label">Detalles del pedido / Diseño</label>
+                                    <textarea id="info-notas" rows="2" class="textarea" placeholder="Temática, colores, decoración..."></textarea>
+                                </div>
+                                <div class="field col-span-2" style="margin-bottom:0;">
+                                    <label class="field-label">Mensaje especial en el pastel</label>
+                                    <input type="text" id="info-mensaje" class="input" placeholder="Ej. Feliz cumpleaños Ana">
+                                </div>
+                                <div class="field col-span-2" style="margin-bottom:0;">
+                                    <label class="field-label">Alergias / Notas</label>
+                                    <input type="text" id="info-alergias" class="input" placeholder="Ej. Sin nuez, sin gluten...">
                                 </div>
                                 <div class="field col-span-2" style="margin-bottom:0;">
                                     <label class="field-label">Imagen de referencia (diseño)</label>
@@ -426,7 +587,7 @@
                             </div>
                         </div>
 
-                        <div class="step-label" style="margin-top:24px;"><span class="step-num">2</span> Ingredientes y cantidades usadas</div>
+                        <div class="step-label" style="margin-top:24px;"><span class="step-num">3</span> Ingredientes y cantidades usadas</div>
                         <div id="costeo-categorias-container"></div>
                     </div>
                 </div>
@@ -460,8 +621,27 @@
                             </div>
                         </div>
 
-                        <button class="btn btn-primary btn-block" onclick="copiarTicketCliente()" style="margin-bottom:10px;">
-                            <span data-icon="send"></span> Copiar ticket para cliente
+                        <!-- Datos para el cliente (van en el PDF) -->
+                        <div class="client-note">Lo siguiente va en el formulario del cliente (sin tus costos internos):</div>
+                        <div class="sum-row" style="align-items:center;">
+                            <span>Envío</span>
+                            <span class="envio-input"><span>$</span><input type="number" id="input-envio" min="0" value="0" placeholder="0"></span>
+                        </div>
+                        <div class="sum-row total"><span>Total al cliente</span><span class="v" id="res-total-cliente">$0.00</span></div>
+
+                        <div class="field" style="margin:14px 0 18px;">
+                            <label class="field-label">Método de pago</label>
+                            <div class="toggle-row">
+                                <button type="button" class="toggle-chip" id="pago-efectivo" onclick="seleccionarPago('Efectivo', this)">Efectivo</button>
+                                <button type="button" class="toggle-chip" id="pago-transferencia" onclick="seleccionarPago('Transferencia', this)">Transferencia</button>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary btn-block" onclick="generarFormularioPDF()" style="margin-bottom:10px;">
+                            <span data-icon="file-text"></span> Generar pedido (PDF)
+                        </button>
+                        <button class="btn btn-outline btn-block" onclick="copiarTicketCliente()" style="margin-bottom:10px;">
+                            <span data-icon="send"></span> Copiar ticket (WhatsApp)
                         </button>
                         <button class="btn btn-ghost btn-block" onclick="limpiarCotizador()">
                             <span data-icon="trash-2"></span> Limpiar todo para nuevo pastel
@@ -491,6 +671,87 @@
 
     <div id="toast" class="toast"><span data-icon="check"></span><span id="toast-msg">Listo</span></div>
 
+    <!-- ================= FORMULARIO IMPRIMIBLE (PDF) ================= -->
+    <div id="formulario-print" aria-hidden="true">
+        <div class="fp-page">
+            <div class="fp-head">
+                <div class="fp-logo" id="fp-logo"></div>
+                <div class="fp-head-r">
+                    <div class="fp-title">FORMULARIO DE<br>PEDIDO DE PASTEL</div>
+                    <div class="fp-brand">DELIZI BAKE'S</div>
+                </div>
+            </div>
+
+            <div class="fp-cols">
+                <div class="fp-left">
+                    <div class="fp-line"><span class="fp-k">N° DE PEDIDO:</span> <span id="fp-num"></span></div>
+                    <div class="fp-line"><span class="fp-k">FECHA DE PEDIDO:</span> <span id="fp-fecha"></span></div>
+                    <div class="fp-line"><span class="fp-k">NOMBRE DEL CLIENTE:</span> <span id="fp-cliente"></span></div>
+                    <div class="fp-line"><span class="fp-k">DIRECCIÓN:</span> <span id="fp-dir"></span></div>
+                    <div class="fp-line"><span class="fp-ic">&#9993;</span> <span id="fp-email"></span></div>
+                    <div class="fp-line"><span class="fp-ic">&#9742;</span> <span id="fp-tel"></span></div>
+                    <div class="fp-checks">
+                        <span><b id="fp-enviar">&#9744;</b> ENVIAR</span>
+                        <span class="fp-sep">/</span>
+                        <span><b id="fp-recoger">&#9744;</b> RECOGER</span>
+                        <span class="fp-divider"></span>
+                        <span><b id="fp-urgente">&#9744;</b> PEDIDO URGENTE</span>
+                    </div>
+                </div>
+
+                <div class="fp-right">
+                    <div class="fp-box">
+                        <div class="fp-box-title">DETALLES DEL EVENTO:</div>
+                        <div class="fp-line"><span class="fp-k">FECHA DEL EVENTO:</span> <span id="fp-ev-fecha"></span></div>
+                        <div class="fp-line"><span class="fp-k">N° DE INVITADOS:</span> <span id="fp-ev-inv"></span></div>
+                        <div class="fp-line"><span class="fp-k">UBICACIÓN:</span> <span id="fp-ev-ubic"></span></div>
+                    </div>
+                    <div class="fp-box fp-imgbox">
+                        <div class="fp-imgbox-left">
+                            <div class="fp-box-title">IMAGEN DE PASTEL:</div>
+                            <div class="fp-img-holder"><img id="fp-img" alt=""></div>
+                        </div>
+                        <div class="fp-imgbox-right">
+                            <div class="fp-box-title">FORMA:</div>
+                            <div class="fp-forma-list" id="fp-forma"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fp-3col">
+                <div class="fp-3col-item"><div class="fp-col-title">SABOR:</div><div id="fp-sabor" class="fp-val"></div></div>
+                <div class="fp-3col-item"><div class="fp-col-title">RELLENO:</div><div id="fp-relleno" class="fp-val"></div></div>
+                <div class="fp-3col-item"><div class="fp-col-title">COBERTURA:</div><div id="fp-cobertura" class="fp-val"></div></div>
+            </div>
+
+            <div class="fp-block">
+                <div class="fp-col-title center">DETALLES DEL PEDIDO:</div>
+                <div id="fp-detalles" class="fp-val fp-multiline"></div>
+            </div>
+
+            <div class="fp-block fp-tight"><span class="fp-k">MENSAJE ESPECIAL EN EL PASTEL:</span> <span id="fp-mensaje"></span></div>
+            <div class="fp-block fp-tight"><span class="fp-k">ALERGIAS / NOTAS:</span> <span id="fp-alergias"></span></div>
+
+            <div class="fp-pay">
+                <div class="fp-pay-methods">
+                    <span class="fp-k">MÉTODO DE PAGO:</span>
+                    <span><b id="fp-efectivo">&#9744;</b> EFECTIVO</span>
+                    <span><b id="fp-transf">&#9744;</b> TRANSFERENCIA</span>
+                </div>
+                <table class="fp-totals">
+                    <tr><th>PRECIO</th><th>ENVÍO</th><th>TOTAL</th></tr>
+                    <tr><td id="fp-precio"></td><td id="fp-envio"></td><td id="fp-total"></td></tr>
+                </table>
+            </div>
+
+            <div class="fp-foot">
+                <span>+52 81-3632-9623</span><span class="fp-divider"></span><span>&#64;delizibakes</span>
+            </div>
+            <div class="fp-thanks">GRACIAS POR SU COMPRA</div>
+        </div>
+    </div>
+
     <script>
         /* ===================== ÍCONOS (SVG inline, offline) ===================== */
         const ICONS = {
@@ -506,8 +767,35 @@
             'check': '<path d="M20 6 9 17l-5-5"/>',
             'chevron-down': '<path d="m6 9 6 6 6-6"/>',
             'image': '<rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>',
-            'receipt': '<path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/>'
+            'receipt': '<path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/>',
+            'file-text': '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>'
         };
+
+        /* ===================== LOGO (SVG monograma DB) ===================== */
+        const LOGO_SVG = `
+        <svg viewBox="0 0 138 120" fill="none" role="img" aria-label="Delizi Bake's">
+            <g stroke="#9AA484" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M33 14 C10 34 10 64 33 78"/>
+                <path d="M33 14 C56 34 56 64 33 78"/>
+                <path d="M33 14 C20 36 20 62 33 78"/>
+                <path d="M33 14 C46 36 46 62 33 78"/>
+                <path d="M33 14 C29 38 29 60 33 78"/>
+                <path d="M33 14 C37 38 37 60 33 78"/>
+                <path d="M26 72 h14 M25.5 75 h15"/>
+                <path d="M33 79 C33 90 33 102 33 110" stroke-width="3.6"/>
+            </g>
+            <text x="70" y="98" font-family="'Playfair Display', Georgia, serif" font-size="86" font-weight="700" fill="#C3CBAE">B</text>
+            <text x="30" y="98" font-family="'Playfair Display', Georgia, serif" font-size="104" font-weight="700" fill="#929D7C">D</text>
+            <g stroke="#9AA484" stroke-width="1.3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M92 44 C86 42 82 44 80 48"/>
+                <ellipse cx="82" cy="47" rx="4.5" ry="2.2" transform="rotate(28 82 47)" fill="#EDF0E4"/>
+                <ellipse cx="126" cy="44" rx="4.5" ry="2.2" transform="rotate(-28 126 44)" fill="#EDF0E4"/>
+                <path d="M124 45 C129 43 132 44 133 48"/>
+                <path d="M96 41 h20 v6 a2 2 0 0 1 -2 2 h-16 a2 2 0 0 1 -2 -2 z" fill="#F4F6EE"/>
+                <path d="M103 41 v9 M110 41 v9"/>
+                <path d="M96 42 C88 42 85 33 91 29 C88 22 96 16 102 20 C105 13 116 14 117 22 C124 22 126 32 119 36 C121 41 116 43 113 41" fill="#F4F6EE"/>
+            </g>
+        </svg>`;
         function svgOf(name) {
             return '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (ICONS[name] || '') + '</svg>';
         }
@@ -566,6 +854,10 @@
         let db = {};
         let cantidadesUsadas = {};
         let tamanoSeleccionado = '';
+        let formaSeleccionada = '';
+        let entregaTipo = '';
+        let pedidoUrgente = false;
+        let metodoPago = '';
         let imagenAdjunta = false;
         let accColapsadas = {}; // recuerda qué acordeones están cerrados
 
@@ -575,11 +867,27 @@
         /* ===================== INIT ===================== */
         function initApp() {
             cargarDatos();
+            document.getElementById('brand-mark').innerHTML = LOGO_SVG;
+            document.getElementById('fp-logo').innerHTML = LOGO_SVG;
             renderIcons();
             renderizarInventario();
             renderizarCotizador();
             setupEvents();
+            inicializarPedido();
             calcularTotales();
+        }
+
+        function inicializarPedido() {
+            const hoy = new Date().toISOString().slice(0, 10);
+            const fp = document.getElementById('ped-fecha');
+            if (!fp.value) fp.value = hoy;
+            const numEl = document.getElementById('ped-num');
+            if (!numEl.value) numEl.value = siguienteNumPedido();
+        }
+
+        function siguienteNumPedido() {
+            let n = parseInt(localStorage.getItem('deliziPedidoNum') || '1000', 10) + 1;
+            return 'DB-' + n;
         }
 
         function cargarDatos() {
@@ -735,11 +1043,15 @@
             const precioVenta = costoTotal * (1 + (margenVal / 100));
             const gananciaLibre = precioVenta - costoTotal;
 
+            const envio = parseFloat(document.getElementById('input-envio').value) || 0;
+            const totalCliente = precioVenta + envio;
+
             document.getElementById('res-mat').innerText = money(costoMateriales);
             document.getElementById('res-op').innerText = money(costoOperativos);
             document.getElementById('res-costo-total').innerText = money(costoTotal);
             document.getElementById('res-precio-venta').innerText = money(precioVenta);
             document.getElementById('res-ganancia-libre').innerText = '+' + money(gananciaLibre);
+            document.getElementById('res-total-cliente').innerText = money(totalCliente);
         }
 
         function actualizarSubtotalesVisuales() {
@@ -760,25 +1072,145 @@
                 document.getElementById('label-margen').innerText = e.target.value + '%';
                 calcularTotales();
             });
+            document.getElementById('input-envio').addEventListener('input', calcularTotales);
         }
 
         function limpiarCotizador() {
             if (!confirm('¿Limpiar todas las cantidades y datos del cliente?')) return;
             cantidadesUsadas = {};
             tamanoSeleccionado = '';
-            document.querySelectorAll('.size-chip').forEach(b => b.classList.remove('is-active'));
+            formaSeleccionada = '';
+            entregaTipo = '';
+            pedidoUrgente = false;
+            metodoPago = '';
+            document.querySelectorAll('.size-chip, .toggle-chip').forEach(b => b.classList.remove('is-active'));
             removerImagen();
-            document.getElementById('info-pan').value = '';
-            document.getElementById('info-relleno').value = '';
-            document.getElementById('info-notas').value = '';
+            ['cli-nombre', 'cli-tel', 'cli-email', 'cli-dir', 'ev-fecha', 'ev-invitados', 'ev-ubicacion',
+             'info-pan', 'info-relleno', 'info-cobertura', 'info-notas', 'info-mensaje', 'info-alergias']
+                .forEach(id => { document.getElementById(id).value = ''; });
+            document.getElementById('input-envio').value = '0';
+            document.getElementById('ped-num').value = siguienteNumPedido();
+            document.getElementById('ped-fecha').value = new Date().toISOString().slice(0, 10);
             renderizarCotizador();
             calcularTotales();
+        }
+
+        /* ===================== GENERAR PDF DEL PEDIDO ===================== */
+        function fmtFecha(iso) {
+            if (!iso) return '';
+            const p = iso.split('-');
+            return p.length === 3 ? `${p[2]}/${p[1]}/${p[0]}` : iso;
+        }
+        function val(id) { return document.getElementById(id).value.trim(); }
+        function setTxt(id, txt) { document.getElementById(id).innerText = txt || ''; }
+
+        function generarFormularioPDF() {
+            const precioVenta = parseFloat(document.getElementById('res-precio-venta').innerText.replace(/[^0-9.]/g, '')) || 0;
+            if (precioVenta <= 0) {
+                mostrarToast('Primero cotiza el pastel (agrega ingredientes o costos)');
+                return;
+            }
+            if (!val('cli-nombre')) {
+                mostrarToast('Falta el nombre del cliente');
+                document.getElementById('cli-nombre').focus();
+                switchTab('cotizador');
+                return;
+            }
+
+            const envio = parseFloat(document.getElementById('input-envio').value) || 0;
+            const total = precioVenta + envio;
+
+            // Rellenar el formulario imprimible (SIN costos internos)
+            setTxt('fp-num', val('ped-num'));
+            setTxt('fp-fecha', fmtFecha(val('ped-fecha')));
+            setTxt('fp-cliente', val('cli-nombre'));
+            setTxt('fp-dir', val('cli-dir'));
+            setTxt('fp-email', val('cli-email'));
+            setTxt('fp-tel', val('cli-tel'));
+            setTxt('fp-ev-fecha', fmtFecha(val('ev-fecha')));
+            setTxt('fp-ev-inv', val('ev-invitados'));
+            setTxt('fp-ev-ubic', val('ev-ubicacion'));
+            setTxt('fp-sabor', val('info-pan'));
+            setTxt('fp-relleno', val('info-relleno'));
+            setTxt('fp-cobertura', val('info-cobertura'));
+            setTxt('fp-mensaje', val('info-mensaje'));
+            setTxt('fp-alergias', val('info-alergias'));
+
+            // Detalles: tamaño + notas de diseño
+            let detalles = '';
+            if (tamanoSeleccionado) detalles += 'Tamaño: ' + tamanoSeleccionado + '\n';
+            if (val('info-notas')) detalles += val('info-notas');
+            setTxt('fp-detalles', detalles.trim());
+
+            // Checkboxes
+            const box = (on) => on ? '☑' : '☐';
+            setTxt('fp-enviar', box(entregaTipo === 'Enviar'));
+            setTxt('fp-recoger', box(entregaTipo === 'Recoger'));
+            setTxt('fp-urgente', box(pedidoUrgente));
+            setTxt('fp-efectivo', box(metodoPago === 'Efectivo'));
+            setTxt('fp-transf', box(metodoPago === 'Transferencia'));
+
+            // Forma
+            const formas = [
+                { k: 'Redondo', cls: 'circ' },
+                { k: 'Cuadrado', cls: 'sq' },
+                { k: 'Rectangular', cls: 'rect' },
+                { k: 'Otra', cls: 'otra' }
+            ];
+            document.getElementById('fp-forma').innerHTML = formas.map(f => {
+                const on = formaSeleccionada === f.k;
+                if (f.cls === 'otra') {
+                    return `<div class="fp-forma-opt ${on ? 'on' : ''}"><span class="mk">${on ? '☑' : '☐'}</span> OTRA</div>`;
+                }
+                return `<div class="fp-forma-opt ${on ? 'on' : ''}"><span class="fp-shape ${f.cls}"></span></div>`;
+            }).join('');
+
+            // Imagen de referencia
+            const imgEl = document.getElementById('fp-img');
+            const preview = document.getElementById('img-preview');
+            if (imagenAdjunta && preview.src) { imgEl.src = preview.src; imgEl.style.display = ''; }
+            else { imgEl.removeAttribute('src'); imgEl.style.display = 'none'; }
+
+            // Totales (cara al cliente)
+            setTxt('fp-precio', money(precioVenta));
+            setTxt('fp-envio', envio > 0 ? money(envio) : '—');
+            setTxt('fp-total', money(total));
+
+            // Guardar consecutivo del número de pedido
+            const numMatch = (val('ped-num').match(/(\d+)\s*$/) || [])[1];
+            if (numMatch) localStorage.setItem('deliziPedidoNum', numMatch);
+
+            // Imprimir / Guardar como PDF
+            setTimeout(() => window.print(), 60);
         }
 
         function seleccionarTamano(tamano, btn) {
             tamanoSeleccionado = tamano;
             document.querySelectorAll('.size-chip').forEach(b => b.classList.remove('is-active'));
             btn.classList.add('is-active');
+        }
+
+        function seleccionarForma(forma, btn) {
+            formaSeleccionada = forma;
+            document.querySelectorAll('#forma-buttons .toggle-chip').forEach(b => b.classList.remove('is-active'));
+            btn.classList.add('is-active');
+        }
+
+        function seleccionarEntrega(tipo, btn) {
+            entregaTipo = (entregaTipo === tipo) ? '' : tipo;
+            document.getElementById('ent-enviar').classList.toggle('is-active', entregaTipo === 'Enviar');
+            document.getElementById('ent-recoger').classList.toggle('is-active', entregaTipo === 'Recoger');
+        }
+
+        function toggleUrgente(btn) {
+            pedidoUrgente = !pedidoUrgente;
+            btn.classList.toggle('is-active', pedidoUrgente);
+        }
+
+        function seleccionarPago(tipo, btn) {
+            metodoPago = (metodoPago === tipo) ? '' : tipo;
+            document.getElementById('pago-efectivo').classList.toggle('is-active', metodoPago === 'Efectivo');
+            document.getElementById('pago-transferencia').classList.toggle('is-active', metodoPago === 'Transferencia');
         }
 
         function mostrarVistaPrevia(event) {
