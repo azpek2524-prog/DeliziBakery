@@ -742,8 +742,8 @@
                     <span><b id="fp-transf">&#9744;</b> TRANSFERENCIA</span>
                 </div>
                 <table class="fp-totals">
-                    <tr><th>PRECIO</th><th>ENVÍO</th><th>TOTAL</th></tr>
-                    <tr><td id="fp-precio"></td><td id="fp-envio"></td><td id="fp-total"></td></tr>
+                    <tr><th>PREPAGO</th><th>PRECIO</th><th>ENVÍO</th><th>TOTAL</th></tr>
+                    <tr><td id="fp-prepago"></td><td id="fp-precio"></td><td id="fp-envio"></td><td id="fp-total"></td></tr>
                 </table>
             </div>
 
@@ -1159,6 +1159,7 @@
             else { imgEl.removeAttribute('src'); imgEl.style.display = 'none'; }
 
             // Totales (cara al cliente)
+            setTxt('fp-prepago', money(total / 2));
             setTxt('fp-precio', money(precioVenta));
             setTxt('fp-envio', envio > 0 ? money(envio) : '—');
             setTxt('fp-total', money(total));
