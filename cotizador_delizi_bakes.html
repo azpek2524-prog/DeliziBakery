@@ -325,6 +325,8 @@
         .toggle-chip.toggle-warn.is-active { background: var(--danger); border-color: var(--danger); }
 
         .client-note { font-size: 11.5px; color: var(--ink-faint); margin: 16px 0 10px; line-height: 1.4; border-top: 1px dashed var(--line-strong); padding-top: 14px; }
+        .mini-link { border: 0; background: transparent; color: var(--sage-700); font-size: 11px; font-weight: 600; cursor: pointer; padding: 1px 4px; border-radius: 6px; text-decoration: underline; }
+        .mini-link:hover { background: var(--sage-050); }
         .envio-input { display: inline-flex; align-items: center; gap: 2px; border: 1px solid var(--line-strong); border-radius: 9px; padding: 2px 8px; background: #fff; }
         .envio-input span { color: var(--ink-faint); font-size: 13px; }
         .envio-input input { width: 72px; border: 0; outline: none; text-align: right; font-size: 14px; font-weight: 600; font-family: inherit; color: var(--ink); padding: 4px 0; background: transparent; }
@@ -354,11 +356,11 @@
             --fp-line: #8E9A72; --fp-soft: #B9C0A0; --fp-ink: #4A4A42; --fp-cream: #F7F5EE;
             font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
             color: var(--fp-ink); background: #fff; box-sizing: border-box;
-            width: 210mm; min-height: 297mm; padding: 12mm 12mm 0; margin: 0 auto; position: relative;
+            width: 210mm; min-height: 297mm; padding: 9mm 12mm 0; margin: 0 auto; position: relative;
         }
         .fp-page * { box-sizing: border-box; }
-        .fp-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 6mm; }
-        .fp-logo { width: 44mm; height: 40mm; }
+        .fp-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 3mm; }
+        .fp-logo { width: 42mm; height: 34mm; }
         .fp-logo img { width: 100%; height: 100%; object-fit: contain; object-position: left center; }
         .fp-head-r { text-align: right; }
         .fp-title { font-size: 30px; font-weight: 700; color: #5E6A45; line-height: 1.05; letter-spacing: .01em; }
@@ -381,7 +383,7 @@
         .fp-imgbox { display: grid; grid-template-columns: 1.7fr 1fr; gap: 0; padding: 0; overflow: hidden; }
         .fp-imgbox-left { padding: 8px; border-right: 1.5px solid var(--fp-line); }
         .fp-imgbox-right { padding: 8px; }
-        .fp-img-holder { height: 42mm; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .fp-img-holder { height: 30mm; display: flex; align-items: center; justify-content: center; overflow: hidden; }
         .fp-img-holder img { max-width: 100%; max-height: 100%; object-fit: contain; }
         .fp-img-holder img[src=""], .fp-img-holder img:not([src]) { display: none; }
         .fp-forma-list { display: flex; flex-direction: column; gap: 7px; align-items: center; font-size: 12px; margin-top: 4px; }
@@ -393,8 +395,8 @@
         .fp-forma-opt.on .fp-shape { background: var(--fp-line); }
         .fp-forma-opt .mk { font-size: 13px; font-weight: 700; }
 
-        .fp-3col { display: grid; grid-template-columns: 1fr 1fr 1fr; border: 1.5px solid var(--fp-line); border-radius: 2px; margin-top: 5mm; }
-        .fp-3col-item { padding: 8px 10px; border-right: 1.5px solid var(--fp-line); min-height: 24mm; }
+        .fp-3col { display: grid; grid-template-columns: 1fr 1fr 1fr; border: 1.5px solid var(--fp-line); border-radius: 2px; margin-top: 3mm; }
+        .fp-3col-item { padding: 7px 10px; border-right: 1.5px solid var(--fp-line); min-height: 18mm; }
         .fp-3col-item:last-child { border-right: 0; }
         .fp-col-title { font-size: 14px; font-weight: 700; text-align: center; color: #5E6A45; letter-spacing: .02em; }
         .fp-col-title.center { border-bottom: 1.5px solid var(--fp-line); padding-bottom: 4px; margin-bottom: 4px; }
@@ -402,11 +404,11 @@
 
         .fp-block { border: 1.5px solid var(--fp-line); border-top: 0; border-radius: 2px; padding: 8px 10px; }
         .fp-3col + .fp-block { border-top: 0; }
-        .fp-multiline { min-height: 26mm; white-space: pre-wrap; }
+        .fp-multiline { min-height: 16mm; white-space: pre-wrap; }
         .fp-tight { font-size: 13px; padding: 7px 10px; }
         .fp-tight .fp-k { font-size: 13px; }
 
-        .fp-pay { border: 1.5px solid var(--fp-line); border-top: 0; margin-bottom: 6mm; }
+        .fp-pay { border: 1.5px solid var(--fp-line); border-top: 0; margin-bottom: 3mm; }
         .fp-pay-methods { display: flex; align-items: center; gap: 16px; padding: 8px 10px; font-size: 13px; font-weight: 700; border-bottom: 1.5px solid var(--fp-line); }
         .fp-pay-methods b { font-weight: 400; font-size: 15px; }
         .fp-totals { width: 100%; border-collapse: collapse; font-family: 'Inter', sans-serif; }
@@ -415,18 +417,18 @@
         .fp-totals th:last-child, .fp-totals td:last-child { border-right: 0; }
         .fp-totals td:last-child { font-weight: 800; color: #5E6A45; }
 
-        .fp-foot { display: flex; align-items: center; justify-content: center; gap: 18px; padding: 4mm 0; font-family: 'Inter', sans-serif; }
+        .fp-foot { display: flex; align-items: center; justify-content: center; gap: 18px; padding: 3mm 0; font-family: 'Inter', sans-serif; }
         .fp-foot-item { display: inline-flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; letter-spacing: .01em; color: #5E6A45; }
         .fp-social { width: 20px; height: 20px; color: #5E6A45; }
         .fp-foot .fp-divider { height: 18px; }
-        .fp-thanks { position: absolute; left: 0; right: 0; bottom: 0; background: #5E6A45; color: #fff; text-align: center; padding: 6px; font-size: 15px; letter-spacing: .08em; }
+        .fp-thanks { margin: 4mm -12mm 0; background: #5E6A45; color: #fff; text-align: center; padding: 7px 6px; font-size: 15px; letter-spacing: .08em; }
 
         @media print {
             @page { size: A4 portrait; margin: 0; }
             html, body { background: #fff !important; }
             body > *:not(#formulario-print) { display: none !important; }
             #formulario-print { display: block !important; }
-            .fp-page { width: 210mm; height: 295mm; min-height: 0; overflow: hidden; padding-bottom: 12mm; }
+            .fp-page { width: auto; min-height: 0; height: auto; overflow: visible; padding: 6mm 12mm 4mm; }
             .fp-img-holder img { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
             .fp-thanks, .fp-forma-opt.on .fp-shape, .fp-totals td:last-child { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
@@ -630,6 +632,10 @@
                             <span class="envio-input"><span>$</span><input type="number" id="input-envio" min="0" value="0" placeholder="0"></span>
                         </div>
                         <div class="sum-row total"><span>Total al cliente</span><span class="v" id="res-total-cliente">$0.00</span></div>
+                        <div class="sum-row" style="align-items:center;">
+                            <span>Prepago <button type="button" class="mini-link" onclick="prepagoMitad()">usar 50%</button></span>
+                            <span class="envio-input"><span>$</span><input type="number" id="input-prepago" min="0" placeholder="0"></span>
+                        </div>
 
                         <div class="field" style="margin:14px 0 18px;">
                             <label class="field-label">Método de pago</label>
@@ -1076,6 +1082,7 @@
              'info-pan', 'info-relleno', 'info-cobertura', 'info-notas', 'info-mensaje', 'info-alergias']
                 .forEach(id => { document.getElementById(id).value = ''; });
             document.getElementById('input-envio').value = '0';
+            document.getElementById('input-prepago').value = '';
             document.getElementById('ped-num').value = siguienteNumPedido();
             document.getElementById('ped-fecha').value = new Date().toISOString().slice(0, 10);
             renderizarCotizador();
@@ -1106,6 +1113,7 @@
 
             const envio = parseFloat(document.getElementById('input-envio').value) || 0;
             const total = precioVenta + envio;
+            const prepago = parseFloat(document.getElementById('input-prepago').value) || 0;
 
             // Rellenar el formulario imprimible (SIN costos internos)
             setTxt('fp-num', val('ped-num'));
@@ -1159,7 +1167,7 @@
             else { imgEl.removeAttribute('src'); imgEl.style.display = 'none'; }
 
             // Totales (cara al cliente)
-            setTxt('fp-prepago', money(total / 2));
+            setTxt('fp-prepago', prepago > 0 ? money(prepago) : '—');
             setTxt('fp-precio', money(precioVenta));
             setTxt('fp-envio', envio > 0 ? money(envio) : '—');
             setTxt('fp-total', money(total));
@@ -1199,6 +1207,14 @@
             metodoPago = (metodoPago === tipo) ? '' : tipo;
             document.getElementById('pago-efectivo').classList.toggle('is-active', metodoPago === 'Efectivo');
             document.getElementById('pago-transferencia').classList.toggle('is-active', metodoPago === 'Transferencia');
+        }
+
+        function prepagoMitad() {
+            const precioVenta = parseFloat(document.getElementById('res-precio-venta').innerText.replace(/[^0-9.]/g, '')) || 0;
+            const envio = parseFloat(document.getElementById('input-envio').value) || 0;
+            const total = precioVenta + envio;
+            if (total <= 0) { mostrarToast('Primero cotiza el pastel'); return; }
+            document.getElementById('input-prepago').value = (total / 2).toFixed(2);
         }
 
         function mostrarVistaPrevia(event) {
