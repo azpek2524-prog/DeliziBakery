@@ -86,7 +86,7 @@
             -webkit-backdrop-filter: saturate(180%) blur(10px);
             border-bottom: 1px solid var(--line);
         }
-        .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 0; }
+        .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 12px; padding-bottom: 12px; }
         .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
         .brand-mark {
             width: 52px; height: 52px; border-radius: 14px; flex: none;
@@ -119,6 +119,7 @@
         .card-pad { padding: 24px; }
 
         .cotizador-grid { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: start; }
+        .cotizador-grid > div { min-width: 0; }
         @media (min-width: 1000px) { .cotizador-grid { grid-template-columns: minmax(0,1.9fr) minmax(320px,1fr); } }
 
         .section-title { font-size: 26px; font-weight: 700; }
